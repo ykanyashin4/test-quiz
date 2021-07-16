@@ -1,8 +1,21 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import { fetchQuestionsThunk } from './thunks';
+import { selectQuestions } from './selector';
 
 function App() {
+
+  const dispatch = useDispatch();
+  const { questions } = useSelector(selectQuestions);
+
+  console.log(questions);
+
+  React.useEffect(() => {
+    dispatch(fetchQuestionsThunk());
+  }, [dispatch]); 
+
   return (
     <div className="App">
       <header className="App-header">
