@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './App/App';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
+import { ThemeProvider, CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import * as theme from '@sbol/design-system/core/styles/light.theme.style';
+
+const key = 'test-quiz'; // must be unique for each app
+const cache = createCache({ key });
+cache.compat = true;
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <CacheProvider value={cache}>
+          <App />
+        </CacheProvider>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

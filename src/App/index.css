@@ -1,0 +1,15 @@
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  font-family: 'SBSans', Arial, Helvetica, sans-serif;
+  background: White;
+  position: relative;
+}
+
+body {
+  min-height: 100%;
+}
